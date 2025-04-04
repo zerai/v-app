@@ -1,0 +1,23 @@
+name: CD/CI
+
+on: [ push ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  commit-stage-workflow:
+    name: Commit Stage
+    uses: zerai/v-app/.github/workflows/commit-stage.yaml@main
+    with:
+      triggering-sha: "${{ github.sha }}"
+
+  acceptance-stage-workflow:
+    name: Acceptance Stage
+    needs:
+      - commit-stage-workflow
+    uses: zerai/v-app/.github/workflows/acceptance-stage.yaml@main
+    with:
+      triggering-sha: "${{ github.sha }}"
+
