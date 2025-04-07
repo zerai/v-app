@@ -4,5 +4,12 @@ parameters:
 	paths:
 		- src
 		- tests
+		- context/clinicManagement/src
+		- context/clinicManagement/tests
+		- context/frontDesk/src
+		- context/frontDesk/tests
+		- context/vetClinicPublic/src
+		- context/vetClinicPublic/tests
+
 	excludePaths:
 		- tests/bootstrap.php

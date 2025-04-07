@@ -13,10 +13,14 @@ use Symplify\EasyCodingStandard\Config\ECSConfig;
 return ECSConfig::configure()
     ->withCache(__DIR__ . '/var/cache_tools/ecs')
     ->withPaths([
-        # __DIR__ . '/config',
         __DIR__ . '/src',
         __DIR__ . '/tests',
-        # __DIR__ . '/tools',
+        __DIR__ . '/context/clinicManagement/src',
+        __DIR__ . '/context/clinicManagement/tests',
+        __DIR__ . '/context/frontDesk/src',
+        __DIR__ . '/context/frontDesk/tests',
+        __DIR__ . '/context/vetClinicPublic/src',
+        __DIR__ . '/context/vetClinicPublic/tests',
     ])
 
     ->withSkip([

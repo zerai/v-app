@@ -8,6 +8,12 @@ return RectorConfig::configure()
     ->withPaths([
         __DIR__ . '/src',
         __DIR__ . '/tests',
+        __DIR__ . '/context/clinicManagement/src',
+        __DIR__ . '/context/clinicManagement/tests',
+        __DIR__ . '/context/frontDesk/src',
+        __DIR__ . '/context/frontDesk/tests',
+        __DIR__ . '/context/vetClinicPublic/src',
+        __DIR__ . '/context/vetClinicPublic/tests',
     ])
 
     ->withSkip([

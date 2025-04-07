@@ -101,12 +101,18 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "src/",
+            "ClinicManagement\\": "context/clinicManagement/src/",
+            "FrontDesk\\": "context/frontDesk/src/",
+            "VetClinicPublic\\": "context/vetClinicPublic/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "App\\Tests\\": "tests/",
+            "ClinicManagementTests\\": "context/clinicManagement/tests/",
+            "FrontDeskTests\\": "context/frontDesk/tests/",
+            "VetClinicPublicTests\\": "context/vetClinicPublic/tests/"
         }
     },
     "minimum-stability": "stable",
