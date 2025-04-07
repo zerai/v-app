@@ -20,15 +20,27 @@
     <testsuites>
         <testsuite name="omnia">
             <directory>tests</directory>
+            <directory>context/clinicManagement/tests</directory>
+            <directory>context/frontDesk/tests</directory>
+            <directory>context/vetClinicPublic/tests</directory>
         </testsuite>
         <testsuite name="unit">
             <directory>tests/Unit</directory>
+            <directory>context/clinicManagement/tests/Unit</directory>
+            <directory>context/frontDesk/tests/Unit</directory>
+            <directory>context/vetClinicPublic/tests/Unit</directory>
         </testsuite>
         <testsuite name="integration">
             <directory>tests/Integration</directory>
+            <directory>context/clinicManagement/tests/Integration</directory>
+            <directory>context/frontDesk/tests/Integration</directory>
+            <directory>context/vetClinicPublic/tests/Integration</directory>
         </testsuite>
         <testsuite name="functional">
             <directory>tests/Functional</directory>
+            <directory>context/clinicManagement/tests/Functional</directory>
+            <directory>context/frontDesk/tests/Functional</directory>
+            <directory>context/vetClinicPublic/tests/Functional</directory>
         </testsuite>
     </testsuites>
 
