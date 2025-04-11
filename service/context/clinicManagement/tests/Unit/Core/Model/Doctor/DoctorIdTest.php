@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace ClinicManagementTest\Core\Model\Doctor;
+namespace ClinicManagementTests\Core\Model\Doctor;
 
 use ClinicManagement\Core\Model\Doctor\DoctorId;
 use PHPUnit\Framework\TestCase;
