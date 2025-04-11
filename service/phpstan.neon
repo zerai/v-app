@@ -18,3 +18,14 @@ parameters:
 			- context/clinicManagement/tests/Support/Factory
 			- context/frontDesk/tests/Support/Factory
 			- context/vetClinicPublic/tests/Support/Factory
+	
+	ignoreErrors:
+		-
+			message: '#Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeDefinition::children\(\)#'
+			paths:
+				- context/clinicManagement/src/Infrastructure/Framework/Extension/ClinicManagementExtension.php
+		-
+			message: '#Method [a-zA-Z0-9\\_]+::loadExtension\(\) has parameter \$config with no value type specified in iterable type array#'
+			paths:
+				- context/clinicManagement/src/Infrastructure/Framework/Extension/ClinicManagementExtension.php
+
