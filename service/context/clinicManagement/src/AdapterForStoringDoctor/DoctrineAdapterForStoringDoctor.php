@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace ClinicManagement\AdapterForStoringRoom;
+namespace ClinicManagement\AdapterForStoringDoctor;
 
 use ClinicManagement\Core\Model\Doctor\Doctor;
 use ClinicManagement\Core\Port\Driven\ForStoringDoctor;
