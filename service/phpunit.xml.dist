@@ -47,6 +47,9 @@
     <coverage processUncoveredFiles="true">
         <include>
             <directory suffix=".php">src</directory>
+            <directory suffix=".php">context/clinicManagement/src</directory>
+            <directory suffix=".php">context/frontDesk/src</directory>
+            <directory suffix=".php">context/vetClinicPublic/src</directory>
         </include>
     </coverage>
 
