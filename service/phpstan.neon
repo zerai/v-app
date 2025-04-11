@@ -12,4 +12,9 @@ parameters:
 		- context/vetClinicPublic/tests
 
 	excludePaths:
-		- tests/bootstrap.php
+		analyseAndScan:
+			- tests/Factory (?)
+			- tests/bootstrap.php
+			- context/clinicManagement/tests/Support/Factory
+			- context/frontDesk/tests/Support/Factory
+			- context/vetClinicPublic/tests/Support/Factory
