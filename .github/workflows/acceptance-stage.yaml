@@ -127,10 +127,25 @@ jobs:
           use-composer-cache: ${{ env.USE_COMPOSER_CACHE }}
           composer-install-args: '--no-interaction --prefer-dist --no-progress --ansi'
 
+      - name: Run database migrations
+        if: ${{ github.ref_name == 'main' }}
+        run: ./bin/console doctrine:migrations:migrate -e test -n -vv --allow-no-migration --ansi
+        env:
+          DATABASE_URL: postgres://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=16&charset=utf8
+
+      - name: Run database schema update
+        if: ${{ github.ref_name != 'main' }}
+        run: ./bin/console doctrine:schema:update -e test --complete --force --ansi
+        env:
+          DATABASE_URL: postgres://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=16&charset=utf8
+
       - name: Run Integration tests
         if: ${{ !matrix.generate-coverage-report }}
         run: |
             vendor/bin/phpunit --testsuite=integration --testdox --colors=always
+        env:
+          DATABASE_URL: postgres://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=16&charset=utf8
+
 
 
   functional-test:
@@ -182,6 +197,18 @@ jobs:
           composer-install-args: '--no-interaction --prefer-dist --no-progress --ansi'
           tools: symfony
 
+      - name: Run database migrations
+        if: ${{ github.ref_name == 'main' }}
+        run: ./bin/console doctrine:migrations:migrate -e test -n -vv --allow-no-migration --ansi
+        env:
+          DATABASE_URL: postgres://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=16&charset=utf8
+
+      - name: Run database schema update
+        if: ${{ github.ref_name != 'main' }}
+        run: ./bin/console doctrine:schema:update -e test --complete --force --ansi
+        env:
+          DATABASE_URL: postgres://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=16&charset=utf8
+
       - name: Run webserver
         run: symfony server:start --port=8080 --dir=public --daemon --no-tls
 
@@ -189,3 +216,5 @@ jobs:
         if: ${{ !matrix.generate-coverage-report }}
         run: |
             vendor/bin/phpunit --testsuite=functional --testdox --colors=always
+        env:
+          DATABASE_URL: postgres://ci-db-user:ci-db-password@127.0.0.1:${{ job.services.pgsql.ports['5432'] }}/ci-db?serverVersion=16&charset=utf8
