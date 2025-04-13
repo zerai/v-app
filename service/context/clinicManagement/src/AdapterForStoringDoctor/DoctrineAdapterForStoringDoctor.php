@@ -20,5 +20,6 @@ class DoctrineAdapterForStoringDoctor extends ServiceEntityRepository implements
     public function save(Doctor $doctor): void
     {
         $this->getEntityManager()->persist($doctor);
+        $this->getEntityManager()->flush();
     }
 }
