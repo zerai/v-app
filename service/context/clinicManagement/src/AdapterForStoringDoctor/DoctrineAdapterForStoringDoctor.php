@@ -3,6 +3,8 @@
 namespace ClinicManagement\AdapterForStoringDoctor;
 
 use ClinicManagement\Core\Model\Doctor\Doctor;
+use ClinicManagement\Core\Model\Doctor\DoctorId;
+use ClinicManagement\Core\Model\Doctor\DoctorNotFoundException;
 use ClinicManagement\Core\Port\Driven\ForStoringDoctor;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -20,6 +22,18 @@ class DoctrineAdapterForStoringDoctor extends ServiceEntityRepository implements
     public function save(Doctor $doctor): void
     {
         $this->getEntityManager()->persist($doctor);
+        $this->getEntityManager()->flush();
+    }
+
+    /**
+     * @throw DoctorNotFoundException
+     */
+    public function remove(DoctorId $doctorId): void
+    {
+        if (null === $doctor = $this->find($doctorId)) {
+            throw DoctorNotFoundException::withId($doctorId);
+        }
+        $this->getEntityManager()->remove($doctor);
         $this->getEntityManager()->flush();
     }
 }
