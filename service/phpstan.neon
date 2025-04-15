@@ -13,6 +13,7 @@ parameters:
 
 	excludePaths:
 		analyseAndScan:
+			- service/src/DataFixtures
 			- tests/Factory (?)
 			- tests/bootstrap.php
 			- context/clinicManagement/tests/Support/Factory
