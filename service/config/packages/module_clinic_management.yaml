@@ -7,6 +7,7 @@ doctrine:
     dbal:
         types:
             doctor_id: ClinicManagement\Infrastructure\Doctrine\Type\DoctorIdType
+            room_id: ClinicManagement\Infrastructure\Doctrine\Type\RoomIdType
     orm:
         mappings:
             Doctor:
@@ -15,3 +16,9 @@ doctrine:
                 dir: '%kernel.project_dir%/context/clinicManagement/src/Core/Model/Doctor'
                 prefix: 'ClinicManagement\Core\Model\Doctor'
                 alias: Doctor
+            Room:
+                type: attribute
+                is_bundle: false
+                dir: '%kernel.project_dir%/context/clinicManagement/src/Core/Model/Room'
+                prefix: 'ClinicManagement\Core\Model\Room'
+                alias: Room
