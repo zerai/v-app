@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20250416085858 extends AbstractMigration
+final class Version20250416090343 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -29,18 +29,6 @@ final class Version20250416085858 extends AbstractMigration
         $this->addSql(<<<'SQL'
             COMMENT ON COLUMN cm_room.created_at IS '(DC2Type:datetime_immutable)'
         SQL);
-        $this->addSql(<<<'SQL'
-            CREATE TABLE fdoctor (id SERIAL NOT NULL, name VARCHAR(180) NOT NULL, created_at TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, PRIMARY KEY(id))
-        SQL);
-        $this->addSql(<<<'SQL'
-            COMMENT ON COLUMN fdoctor.created_at IS '(DC2Type:datetime_immutable)'
-        SQL);
-        $this->addSql(<<<'SQL'
-            CREATE TABLE room (id UUID NOT NULL, name VARCHAR(150) NOT NULL, PRIMARY KEY(id))
-        SQL);
-        $this->addSql(<<<'SQL'
-            COMMENT ON COLUMN room.id IS '(DC2Type:uuid)'
-        SQL);
     }
 
     public function down(Schema $schema): void
@@ -51,12 +39,6 @@ final class Version20250416085858 extends AbstractMigration
         SQL);
         $this->addSql(<<<'SQL'
             DROP TABLE cm_room
-        SQL);
-        $this->addSql(<<<'SQL'
-            DROP TABLE fdoctor
-        SQL);
-        $this->addSql(<<<'SQL'
-            DROP TABLE room
         SQL);
     }
 }
