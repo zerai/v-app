@@ -64,15 +64,6 @@
             "ref": "3c5175ca17ff2dc08715e460214e9ce77aa46580"
         }
     },
-    "enqueue/dbal": {
-        "version": "0.10",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "main",
-            "version": "0.4",
-            "ref": "4dd47013ecec8a158d186f63ec4b51f1defff897"
-        }
-    },
     "nelmio/cors-bundle": {
         "version": "2.5",
         "recipe": {
