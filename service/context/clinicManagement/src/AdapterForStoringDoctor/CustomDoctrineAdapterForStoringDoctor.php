@@ -6,23 +6,20 @@ use ClinicManagement\Core\Model\Doctor\Doctor;
 use ClinicManagement\Core\Model\Doctor\DoctorId;
 use ClinicManagement\Core\Model\Doctor\DoctorNotFoundException;
 use ClinicManagement\Core\Port\Driven\ForStoringDoctor;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use ClinicManagement\Infrastructure\Doctrine\Lib\DoctrineRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-/**
- * @extends ServiceEntityRepository<Doctor>
- */
-class DoctrineAdapterForStoringDoctor extends ServiceEntityRepository implements ForStoringDoctor
+class CustomDoctrineAdapterForStoringDoctor extends DoctrineRepository implements ForStoringDoctor
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Doctor::class);
+        parent::__construct($registry, Doctor::class, 'doctor');
     }
 
     public function save(Doctor $doctor): void
     {
-        $this->getEntityManager()->persist($doctor);
-        $this->getEntityManager()->flush();
+        $this->em->persist($doctor);
+        $this->em->flush();
     }
 
     /**
@@ -30,15 +27,15 @@ class DoctrineAdapterForStoringDoctor extends ServiceEntityRepository implements
      */
     public function remove(DoctorId $doctorId): void
     {
-        if (null === $doctor = $this->find($doctorId)) {
+        if (null === $doctor = $this->em->find(Doctor::class, $doctorId)) {
             throw DoctorNotFoundException::withId($doctorId);
         }
-        $this->getEntityManager()->remove($doctor);
-        $this->getEntityManager()->flush();
+        $this->em->remove($doctor);
+        $this->em->flush();
     }
 
     public function ofId(DoctorId $doctorId): ?Doctor
     {
-        return $this->find($doctorId);
+        return $this->em->find(Doctor::class, $doctorId);
     }
 }

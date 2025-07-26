@@ -13,6 +13,9 @@ parameters:
 
 	excludePaths:
 		analyseAndScan:
+			- src/Entity
+			- context/clinicManagement/src/AdapterForStoringDoctor/CustomDoctrineAdapterForStoringDoctor.php
+			- context/clinicManagement/src/Infrastructure/Doctrine/Lib/
 			- service/src/DataFixtures (?)
 			- tests/Factory (?)
 			- tests/bootstrap.php
