@@ -13,4 +13,6 @@ interface ForStoringDoctor
      * @throw DoctorNotFoundException
      */
     public function remove(DoctorId $doctorId): void;
+
+    public function ofId(DoctorId $doctorId): ?Doctor;
 }

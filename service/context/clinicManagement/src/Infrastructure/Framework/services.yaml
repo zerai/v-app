@@ -27,3 +27,13 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    ClinicManagement\Core\Model\Doctor\Usecase\AddDoctor\AddDoctorHandler:
+        public: true
+        arguments:
+            $repository: '@ClinicManagement\AdapterForStoringDoctor\DoctrineAdapterForStoringDoctor'
+
+    ClinicManagement\Core\Model\Doctor\Usecase\AddDoctor\DeleteDoctorHandler:
+        public: true
+        arguments:
+            $repository: '@ClinicManagement\AdapterForStoringDoctor\DoctrineAdapterForStoringDoctor'
