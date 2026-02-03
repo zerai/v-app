@@ -137,7 +137,7 @@
         "cs:fix": "./vendor/bin/ecs --fix",
         "rc": "./vendor/bin/rector  process --dry-run",
         "rc:fix": "./vendor/bin/rector",
-        "sa": "./vendor/bin/phpstan",
+        "sa": "./vendor/bin/phpstan --memory-limit=256M",
         "tf": "./vendor/bin/phpunit --testsuite=functional --testdox",
         "ti": "./vendor/bin/phpunit --testsuite=integration --testdox",
         "tu": "./vendor/bin/phpunit --testsuite=unit --testdox"

@@ -36,4 +36,9 @@ class DoctrineAdapterForStoringDoctor extends ServiceEntityRepository implements
         $this->getEntityManager()->remove($doctor);
         $this->getEntityManager()->flush();
     }
+
+    public function ofId(DoctorId $doctorId): ?Doctor
+    {
+        return $this->find($doctorId);
+    }
 }
